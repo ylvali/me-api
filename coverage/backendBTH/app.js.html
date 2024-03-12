@@ -218,7 +218,12 @@
 <a name='L170'></a><a href='#L170'>170</a>
 <a name='L171'></a><a href='#L171'>171</a>
 <a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -238,16 +243,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -324,6 +331,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -349,6 +357,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -362,6 +371,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -393,7 +403,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
 /*jshint esversion: 6 */
 &nbsp;
-// Express app 
+// Express app
 const express = require("express");
 &nbsp;
 // MORGAN for inloggning
@@ -409,6 +419,7 @@ const bodyParser = require("body-parser");
 // Express app
 const app = express();
 const port = 8334;
+&nbsp;
 //console.log('Running on port' +port);
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -418,8 +429,9 @@ console.log('PROCESS ENV: '+process.env.NODE_ENV);
 // Use sqlite database &amp; run it
 // const sqlite3 = require('sqlite3').verbose();
 // const db = new sqlite3.Database('./db/texts.sqlite');
-// Use a testdb if in test mode 
+// Use a testdb if in test mode
 const db = require("./db/database.js");
+&nbsp;
 console.log(db);
 &nbsp;
 // Use cors
@@ -446,20 +458,20 @@ app.use((req, res, next) =&gt; {
     next();
 });
 &nbsp;
-// Json webtokens 
-// A secure way of using tokens for login etc. 
+// Json webtokens
+// A secure way of using tokens for login etc.
 &nbsp;
 // Using an environmental variable
-// JWT secret set in the environment : server &amp; process 
+// JWT secret set in the environment : server &amp; process
 // (Change longsecret to something of many characters &amp; difficult)
 // $export JWT_SECRET='R_[/_&amp;g2Upsl5I3]uQ]K&lt;2o|J' // run this in the terminal where the app is run
- const jwt = require('jsonwebtoken');
- const payload = { email: "user@example.com" };
+const jwt = require('jsonwebtoken');
+const payload = { email: "user@example.com" };
 &nbsp;
-// JWT secret set in the script 
+// JWT secret set in the script
 const secret = process.env.JWT_SECRET; // using the secret token on your server &amp; local environment
 &nbsp;
-// Create the token sign 
+// Create the token sign
 // The token is created in the method below
 var token;
 &nbsp;
@@ -474,7 +486,7 @@ const registry= require('./routes/registry');
 &nbsp;
 app.use('/', index);
 app.use('/hello', hello);
-app.use('/reports', reports); 
+app.use('/reports', reports);
 app.use('/users', registry);
 &nbsp;
 &nbsp;
@@ -496,7 +508,8 @@ app.post("/verifyToken", (req, res) =&gt; {
     // Control that the token functions
     var response = 'valid token';
     var token = req.headers['x-access-token'];
-    jwt.verify(token, process.env.JWT_SECRET, function(err, decoded) {
+&nbsp;
+    jwt.verify(token, process.env.JWT_SECRET, function(err) {
         <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
             // not a valid token
 <span class="cstat-no" title="statement not covered" >            response = 'invalid token';</span>
@@ -525,6 +538,7 @@ app.get("/hello/:msg", (req, res) =&gt; {
             msg: req.params.msg
         }
     };
+&nbsp;
     res.json(data);
 });
 &nbsp;
@@ -534,6 +548,7 @@ app.get("/hello/:msg", (req, res) =&gt; {
 // Put this last
 app.use((req, res, next) =&gt; {
     var err = new Error("Not Found");
+&nbsp;
     err.status = 404;
     next(err);
 });
@@ -557,7 +572,7 @@ app.use((err, req, res, next) =&gt; {
 // Start up server
 //app.listen(port, () =&gt; console.log(`Example API listening on port ${port}!`));
 &nbsp;
-// To import server into the test files &amp; call the server 
+// To import server into the test files &amp; call the server
 // testfiles: test/reports/report_integration.js
 const server = app.listen(port, () =&gt; console.log(`Example app listening on port ${port}!`));
 &nbsp;
@@ -568,7 +583,7 @@ module.exports = server;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Mar 06 2024 19:08:07 GMT+0530 (India Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Mar 12 2024 15:37:32 GMT+0530 (India Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

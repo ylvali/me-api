@@ -18,9 +18,7 @@ describe('GET /token', () => {
         chai.request(server)
             .get("/token")
             .end((err, res) => {
-                console.log(res.body.data.token);
                 token = res.body.data.token;
-                console.log(res.body.data.token)
                 res.should.have.status(200);
                 done();
             });
@@ -35,7 +33,7 @@ describe('GET /token', () => {
                 .set('x-access-token', token)
                 .send({title: 'test1', data1: 'test1'})
                 .end((err, res) => {
-                    console.log(res);
+                    console.log(err);
                     res.should.have.status(200);
                     res.body.should.be.an("object");
                     res.body.data.should.be.an("object");
@@ -53,7 +51,6 @@ describe('GET /token', () => {
                 .set('x-access-token', token)
                 .send({title: 'test1', data1: 'test1'})
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(400);
                     done();
                 });
@@ -68,7 +65,6 @@ describe('GET /token', () => {
                 .set('x-access-token', token)
                 .send({title: 'test123x', data1: 'data2xNew'})
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(200);
                     res.body.should.be.an("object");
                     res.body.data.should.be.an("object");
@@ -83,7 +79,6 @@ describe('GET /token', () => {
             chai.request(server)
                 .post("/users/allUsers")
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(200);
                     res.body.should.be.an("object");
                     res.body.data.should.be.an("object");
@@ -97,7 +92,6 @@ describe('GET /token', () => {
             chai.request(server)
                 .post("/users/allLoggedOn")
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(200);
                     res.body.should.be.an("object");
                     res.body.data.should.be.an("object");
@@ -111,7 +105,6 @@ describe('GET /token', () => {
             chai.request(server)
                 .post("/users/logout")
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(200);
                     res.body.should.be.an("object");
                     res.body.data.should.be.an("object");
@@ -127,7 +120,6 @@ describe('GET /token', () => {
                 .post("/users/register")
                 .send({email: 'testS1', password: 'testS1', name: 'testS1', birthday: 'testS1'})
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(200);
                     res.body.should.be.an("object");
                     res.body.data.should.be.an("object");
@@ -143,7 +135,6 @@ describe('GET /token', () => {
                 .post("/users/register")
                 .send({email: 'testS1', password: 'testS1', name: 'testS1', birthday: 'testS1'})
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(400);
                     done();
                 });
@@ -157,7 +148,6 @@ describe('GET /token', () => {
                 .post("/users/register")
                 .send({email: 'testS', name: 'testS', birthday: 'testS'})
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(400);
                     done();
                 });
@@ -170,7 +160,6 @@ describe('GET /token', () => {
                 .post("/users/login")
                 .send({email: 'testS1', password: 'testS1'})
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(200);
                     res.body.should.be.an("object");
                     res.body.data.should.be.an("object");
@@ -186,7 +175,6 @@ describe('GET /token', () => {
                 .post("/users/login")
                 .send({email: 'testS1', password: 'testS1'})
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(200);
                     res.body.should.be.an("object");
                     res.body.data.should.be.an("object");
@@ -202,7 +190,6 @@ describe('GET /token', () => {
                 .post("/users/login")
                 .send({password: 'testS'})
                 .end((err, res) => {
-                    // console.log(res);
                     res.should.have.status(400);
                     done();
                 });

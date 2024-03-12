@@ -1,12 +1,19 @@
-#
-# This is a comment
-# Remember to use real tabs in the Makefile, no soft tabs (spaces).
-#
+language: node_js
 
-# A make target
-help:
-    @echo "This is a sample makefile having two targets of help and hello."
+node_js:
+    - "node"
+    - "10"
+    - "8"
+    - "6"
 
-# Another make target
-hello:
-    @echo "Hello World in a makefile using make."
+sudo: false
+
+git:
+    submodules: false
+
+before_script:
+    - npm install
+
+script:
+    - npm test
+

@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "pretest": "bash db/reset_test_db.bash",
+    "pretest2": "export JWT_SECRET='R_[/_&g2Upsl5I3]uQ]K<2o|J';",
     "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
-    "prestart": "bash start.bash",
+    "prestart": "export JWT_SECRET='R_[/_&g2Upsl5I3]uQ]K<2o|J'",
     "start": "node app.js",
-    "posttest": "npm run eslint",
     "eslint": "eslint .",
     "clean": "rm -rf node_modules package-lock.json",
     "process": "pm2 start app.js --name me-api",
