@@ -23,6 +23,7 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 console.log('PROCESS ENV: '+process.env.NODE_ENV);
+process.env.JWT_SECRET = 'R_[/_&g2Upsl5I3]uQ]K<2o|J';
 
 // Use sqlite database & run it
 // const sqlite3 = require('sqlite3').verbose();

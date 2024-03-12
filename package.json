@@ -4,7 +4,7 @@
   "description": "jsramverkBTH(course2019Completed2024)",
   "main": "index.js",
   "scripts": {
-    "pretest": "bash db/reset_test_db.bash",
+    "pretest": "bash db/reset_test_db.bash export JWT_SECRET='R_[/_&g2Upsl5I3]uQ]K<2o|J';",
     "pretest2": "export JWT_SECRET='R_[/_&g2Upsl5I3]uQ]K<2o|J';",
     "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
     "prestart": "export JWT_SECRET='R_[/_&g2Upsl5I3]uQ]K<2o|J'",
